@@ -6,7 +6,10 @@
     <ul class="list-group">
         {% for post in posts %}
             <li class="list-group-item">
-                <a href="{% url "blog:post_detail" post.id %}">{{ post.title }}</a>
+                <a class="fs-3" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                <p>
+                {{ post.body|truncatewords:30 }}
+                </p>
             </li>
         {% endfor %}
     </ul>
