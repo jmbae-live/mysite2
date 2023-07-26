@@ -8,11 +8,12 @@
             <li class="list-group-item">
                 <a class="fs-3" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
                 <p>
-                {{ post.body|truncatewords:30 }}
+                    {{ post.body|truncatewords:30 }}
                 </p>
             </li>
         {% endfor %}
     </ul>
+    {#   CBV의 경우 posts 대신 page_obj 사용 #}
     {% include 'blog/pagination.html' with page=posts %}
 
 {% endblock content %}
