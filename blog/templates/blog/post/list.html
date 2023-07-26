@@ -13,5 +13,6 @@
             </li>
         {% endfor %}
     </ul>
+    {% include 'blog/pagination.html' with page=posts %}
 
 {% endblock content %}
