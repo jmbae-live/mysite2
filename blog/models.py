@@ -20,3 +20,6 @@ class Post(models.Model):
         indexes = [
             models.Index(fields=['-published'])
         ]
+
+    def __str__(self):
+        return self.title
