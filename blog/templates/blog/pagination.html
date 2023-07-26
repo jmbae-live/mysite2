@@ -4,14 +4,9 @@
         {% if page.has_previous %}
             <li class="page-item"><a class="page-link" href="?page={{ page.previous_page_number }}">Previous</a></li>
         {% endif %}
-        {#        {% for p in page.paginator.num_pages %}#}
-        {#            <li class="page-item"><a class="page-link" href="#">{{ p }}</a></li>#}
-        {#        {% endfor %}#}
-        <li class="page-item">
-            <span class="page-link">
-            Page {{ page.number }} of {{ page.paginator.num_pages }}.
-                </span>
-        </li>
+        {% for p in page.paginator.page_range %}
+            <li class="page-item"><a class="page-link" href="?page={{ p }}">{{ p }}</a></li>
+        {% endfor %}
         {% if page.has_next %}
             <li class="page-item"><a class="page-link" href="?page={{ page.next_page_number }}">Next</a></li>
         {% endif %}
