@@ -1,8 +1,15 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <h1>{{ post.title }}</h1>
-    <p>
-        {{ post.body|linebreaks }}
-    </p>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">
+                {{ post.body|linebreaks }}
+            </p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+    </div>
+
 {% endblock content %}
