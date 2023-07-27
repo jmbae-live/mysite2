@@ -7,7 +7,7 @@
             <p class="card-text">
                 {{ post.body|linebreaks }}
             </p>
-            <a href="#" class="card-link">Card link</a>
+            <a href="{% url "blog:post_share" post.id %}" class="card-link">Share</a>
             <a href="#" class="card-link">Another link</a>
         </div>
     </div>

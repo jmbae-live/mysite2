@@ -7,10 +7,24 @@
             "{{ post.title }}" was successfully sent to {{ form.cleaned_data.to }}.
         </p>
     {% else %}
-        <form method="post">
-            {{ form.as_p }}
+        <form method="post" class="container">
+            <div class="row my-2">
+                {{ form.name.label_tag }}
+                {{ form.name }}
+            </div>
+            <div class="row my-2">
+                {{ form.to.label_tag }}
+                {{ form.to }}
+            </div>
+            <div class="row my-2">
+                {{ form.comments.label_tag }}
+                {{ form.comments }}
+            </div>
+
             {% csrf_token %}
-            <input type="submit" value="Send e-mail">
+            <div class="row my-2">
+                <input type="submit" value="Send e-mail" class="btn btn-primary">
+            </div>
         </form>
     {% endif %}
 {% endblock content %}
