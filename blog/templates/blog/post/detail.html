@@ -12,6 +12,15 @@
         </div>
     </div>
     <div class="card">
+        <ul class="list-group">
+            {% for comment in comments %}
+                <li class="list-group-item">
+                    <b>{{ comment.name }}:</b> {{ comment.body|linebreaks }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="card">
         {% include 'blog/post/includes/comment_form.html' %}
     </div>
 {% endblock content %}
