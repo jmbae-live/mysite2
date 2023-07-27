@@ -10,6 +10,9 @@
                 <p>
                     {{ post.body|truncatewords:30 }}
                 </p>
+                <p>
+                    Tags: {{ post.tags.all|join:',' }}
+                </p>
             </li>
         {% endfor %}
     </ul>
