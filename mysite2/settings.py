@@ -127,3 +127,6 @@ EMAIL_HOST_USER = 'jungman82@gmail.com'
 EMAIL_HOST_PASSWORD = 'wrakgbytyixxpgyi'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
