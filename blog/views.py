@@ -27,7 +27,8 @@ def post_list(request, tag_slug=None):
 
 
 def post_detail(request, post_id):
-    post = get_object_or_404(Post, id=post_id)
+    queryset = Post.objects.prefetch_related('products')
+    post = get_object_or_404(queryset, id=post_id)
     form = CommentForm()
     comments = post.comments.filter(active=True)
     return render(request, 'blog/post/detail.html', {'post': post, 'form': form, 'comments': comments})

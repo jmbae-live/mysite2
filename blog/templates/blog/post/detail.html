@@ -11,6 +11,14 @@
             <a href="#" class="card-link">Another link</a>
         </div>
     </div>
+    <div class="py-4">
+        <h5>Products</h5>
+        <ul class="list-group list-group-horizontal">
+            {% for product in post.products.all %}
+                <li class="list-group-item">{% include 'shop/product_detail.html' with product=product %}</li>
+            {% endfor %}
+        </ul>
+    </div>
     <div class="card border-white">
         <div class="card-body">
             <div class="card-title">
