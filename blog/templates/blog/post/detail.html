@@ -11,16 +11,21 @@
             <a href="#" class="card-link">Another link</a>
         </div>
     </div>
-    <div class="card">
-        <ul class="list-group">
-            {% for comment in comments %}
-                <li class="list-group-item">
-                    <b>{{ comment.name }}:</b> {{ comment.body|linebreaks }}
-                </li>
-            {% endfor %}
-        </ul>
+    <div class="card border-white">
+        <div class="card-body">
+            <div class="card-title">
+                <h2>Comments</h2>
+            </div>
+            <ul class="list-group">
+                {% for comment in comments %}
+                    <li class="list-group-item">
+                        <b>{{ comment.name }}:</b> {{ comment.body|linebreaks }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
-    <div class="card">
+    <div class="card border-white">
         {% include 'blog/post/includes/comment_form.html' %}
     </div>
 {% endblock content %}
