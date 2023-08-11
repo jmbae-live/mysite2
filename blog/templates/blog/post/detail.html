@@ -17,7 +17,7 @@
             {% for product in post.products.all %}
                 <li class="list-group-item d-flex flex-column col-sm-4 justify-content-baseline align-items-center">
                     {% include 'shop/product_detail.html' with product=product %}
-                    <a href="{% url 'shop:add_cart' product.id %}">Add to Cart</a>
+                    <a class="addCart" href="#" data-id="{{ product.id }}">Add to Cart</a>
                 </li>
             {% endfor %}
         </ul>
@@ -40,3 +40,26 @@
         {% include 'blog/post/includes/comment_form.html' %}
     </div>
 {% endblock content %}
+<script>
+    {% block domready %}
+        const url = '{% url 'shop:add_cart' %}';
+        const options = {
+            method: 'POST',
+            headers: {'X-CSRFToken': csrftoken},
+            mode: 'same-origin'
+        }
+        const elements = Array.from(document.getElementsByClassName('addCart'));
+        elements.forEach(elem => {
+            elem.addEventListener('click', function (e) {
+                e.preventDefault();
+                const formData = new FormData()
+                formData.append('id', this.dataset.id);
+                options['body'] = formData;
+                fetch(url, options).then(response => response.json()).then(data => {
+                    const elem = document.getElementById('cart_count');
+                    elem.innerHTML = data['cart_length'];
+                });
+            })
+        });
+    {% endblock %}
+</script>

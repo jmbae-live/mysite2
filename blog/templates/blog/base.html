@@ -24,7 +24,12 @@
             {% endblock content %}
         </div>
         <div class="col-3 text-bg-light">
-            <h3>Sidebar</h3>
+            <h3>
+                Sidebar
+                <a href="{% url 'shop:cart_detail' %}" class="btn btn-sm btn-info">
+                    장바구니 <span id="cart_count">{{ cart.items|length }}</span>
+                </a>
+            </h3>
             <hr>
             <h4>Most commented Posts</h4>
             {% get_most_commented_posts as most_commented_posts %}
@@ -47,6 +52,7 @@
 <script>
     const csrftoken = Cookies.get('csrftoken');
     document.addEventListener('DOMContentLoaded', (event) => {
+        console.log('loaded', csrftoken)
         {% block domready %}
         {% endblock domready %}
     })
