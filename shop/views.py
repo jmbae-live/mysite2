@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from shop.forms import OrderCreateForm
 from shop.models import Product, OrderItem
+from shop.tasks import order_created
 
 
 # Create your views here.
@@ -84,6 +85,7 @@ def order_create(request):
                                          quantity=item['quantity'])
             request.session['cart'] = {}
             request.session.modified = True
+            order_created.delay(order.id)
             return render(request, 'shop/order_created.html', {'order': order})
     else:
         form = OrderCreateForm()
