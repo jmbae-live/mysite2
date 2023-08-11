@@ -1,4 +1,13 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-<h1>장바구니</h1>
+    <h1>장바구니</h1>
+    {% for product_id, item in cart_dict.items %}
+        {% include 'shop/product_detail.html' with product=item.product %}
+        <form action="{% url 'shop:update_cart' product_id %}" method="post">
+            <input class="form-control" type="text" name="quantity" value="{{ item.quantity }}" placeholder="수량">
+            <input type="submit" value="수정">
+            {% csrf_token %}
+        </form>
+        <a href="{% url 'shop:remove_cart' product_id %}" class="btn btn-danger">삭제</a>
+    {% endfor %}
 {% endblock %}
