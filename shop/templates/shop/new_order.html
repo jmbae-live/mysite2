@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+{% load humanize %}
+
+{% block title %}
+    주문하기
+{% endblock %}
+
+{% block content %}
+    <h1>주문하기</h1>
+    <ul class="list-group d-flex flex-column col-sm-12">
+        {% for product_id, item in cart_dict.items %}
+            <li class="list-group-item col-sm-12 d-flex flex-row align-items-center">
+                <div class="container">
+                    {% include 'shop/product_detail.html' with product=item.product %}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="container d-flex flex-column align-items-end">
+        <span class="h3">
+        Total: {{ total_price|intcomma }}원
+        </span>
+    </div>
+    <form action="{% url 'shop:order_create' %}" method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" value="결제하기" class="btn btn-primary form-control">
+    </form>
+{% endblock %}
