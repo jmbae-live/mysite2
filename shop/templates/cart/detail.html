@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load humanize %}
 {% block content %}
     <h1>장바구니</h1>
     <ul class="list-group d-flex flex-column col-sm-12">
@@ -21,4 +22,11 @@
             </li>
         {% endfor %}
     </ul>
+    <hr>
+    <div class="container d-flex flex-column align-items-end">
+        <span class="h3">
+        Total: {{ total_price|intcomma }}원
+        </span>
+        <a href="{% url 'shop:order_create' %}" class="btn btn-primary">주문하기</a>
+    </div>
 {% endblock %}

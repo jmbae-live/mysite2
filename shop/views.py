@@ -47,7 +47,13 @@ def cart_detail(request):
         item['price'] = Decimal(item['price'])
         item['total_price'] = item['price'] * item['quantity']
         cart[key] = item
+    total_price = sum(Decimal(item['price']) * item['quantity'] for item in cart.values())
 
     return render(request, 'cart/detail.html', {
-        'cart_dict': cart
+        'cart_dict': cart,
+        'total_price': total_price
     })
+
+
+def order_create(request):
+    return render(request, 'shop/order_created.html', {})
