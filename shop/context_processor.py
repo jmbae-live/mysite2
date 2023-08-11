@@ -1,10 +1,7 @@
+
 def cart(request):
-    cart = request.session.get('cart', {
-        '1': {
-            'price': 1000,
-        }
-    })
+    cart = request.session.get('cart', {})
 
     return {
-        'cart': list(cart.values()),
+        'cart': cart,
     }

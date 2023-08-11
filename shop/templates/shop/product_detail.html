@@ -1,5 +1,8 @@
+<div class="flex-container ">
 <h1>{{ product }}</h1>
 {% if product.image %}
     <img width="120" src="{{ product.image.url }}" alt="">
 {% endif %}
 {{ product.price }}원
+    <a href="{% url 'shop:add_cart' product.id %}">Add to Cart</a>
+</div>
