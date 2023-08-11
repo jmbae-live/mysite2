@@ -19,7 +19,10 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from blog import views
+
 urlpatterns = [
+                  path("", views.post_list, name='home'),
                   path("admin/", admin.site.urls),
                   path("blog/", include('blog.urls'))
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
