@@ -15,7 +15,10 @@
         <h5>Products</h5>
         <ul class="list-group list-group-horizontal">
             {% for product in post.products.all %}
-                <li class="list-group-item d-flex flex-column col-sm-4 justify-content-baseline align-items-center">{% include 'shop/product_detail.html' with product=product %}</li>
+                <li class="list-group-item d-flex flex-column col-sm-4 justify-content-baseline align-items-center">
+                    {% include 'shop/product_detail.html' with product=product %}
+                    <a href="{% url 'shop:add_cart' product.id %}">Add to Cart</a>
+                </li>
             {% endfor %}
         </ul>
     </div>
