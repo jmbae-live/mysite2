@@ -13,7 +13,7 @@
 <body>
 <nav class="navbar bg-body-emphasis">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Django Blog</a>
+        <a class="navbar-brand h1" href="/">Django Blog</a>
     </div>
 </nav>
 
@@ -24,18 +24,18 @@
             {% endblock content %}
         </div>
         <div class="col-3 text-bg-light">
-            <h2>Sidebar</h2>
-            {{ cart }}
-            <h3>Most commented Posts</h3>
+            <h3>Sidebar</h3>
+            <hr>
+            <h4>Most commented Posts</h4>
             {% get_most_commented_posts as most_commented_posts %}
-            <ul>
+            <ul class="list-group">
                 {% for post in most_commented_posts %}
-                    <li>
-                        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    <li class="list-group-item">
+                        <a class="list-group-item-action" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
                     </li>
                 {% endfor %}
             </ul>
-            <h3>Latest Posts</h3>
+            <h4 class="mt-3">Latest Posts</h4>
             {% show_latest_posts 3 %}
         </div>
     </div>

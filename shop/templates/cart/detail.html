@@ -1,13 +1,24 @@
 {% extends 'blog/base.html' %}
 {% block content %}
     <h1>장바구니</h1>
-    {% for product_id, item in cart_dict.items %}
-        {% include 'shop/product_detail.html' with product=item.product %}
-        <form action="{% url 'shop:update_cart' product_id %}" method="post">
-            <input class="form-control" type="text" name="quantity" value="{{ item.quantity }}" placeholder="수량">
-            <input type="submit" value="수정">
-            {% csrf_token %}
-        </form>
-        <a href="{% url 'shop:remove_cart' product_id %}" class="btn btn-danger">삭제</a>
-    {% endfor %}
+    <ul class="list-group d-flex flex-column col-sm-12">
+        {% for product_id, item in cart_dict.items %}
+            <li class="list-group-item col-sm-12 d-flex flex-row align-items-center">
+                <div class="container">
+                    {% include 'shop/product_detail.html' with product=item.product %}
+                </div>
+                <div class="container col-sm-3 d-flex flex-column">
+                    <form class="d-flex flex-row" action="{% url 'shop:update_cart' product_id %}" method="post">
+                        <input class="form-control" type="text" name="quantity" value="{{ item.quantity }}"
+                               placeholder="수량">
+                        <div>&nbsp;</div>
+                        <input class="btn btn-sm btn-info" type="submit" value="수정">
+                        {% csrf_token %}
+                    </form>
+                    <br>
+                    <a href="{% url 'shop:remove_cart' product_id %}" class="btn btn-sm btn-danger">삭제</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
