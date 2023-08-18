@@ -24,11 +24,15 @@ SECRET_KEY = "django-insecure-+5pyu10r9jecf%pk8!ix_q!ap^0^#8^+%8-80+o#wbv7$h#ull
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'mysite.com'
+]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'account.apps.AccountConfig',
+    'social_django',
     "shop.apps.ShopConfig",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -148,3 +152,11 @@ CACHES = {
 }
 
 CELERY_TASK_ALWAYS_EAGER = DEBUG
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.naver.NaverOAuth2',
+]
+
+SOCIAL_AUTH_NAVER_KEY = 'JiARA_lKm_5xm9Sd9l4x'
+SOCIAL_AUTH_NAVER_SECRET = 'TXMPVDfEVC'
