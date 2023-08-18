@@ -33,6 +33,7 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'social_django',
+    'django_extensions',
     "shop.apps.ShopConfig",
     "django.contrib.admin",
     "django.contrib.auth",

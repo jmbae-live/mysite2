@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Log-in{% endblock title %}
+
+{% block content %}
+    <h1>Log-in</h1>
+    {% if form.errors %}
+        <p>
+            Your username and password didn't match.
+            Please try again.
+        </p>
+    {% else %}
+        <p>
+            다음 폼을 사용하여 로그인하세요.
+            {#            계정이 없다면 <a href="{% url "register" %}">여기에서 등록하세요</a>.#}
+        </p>
+    {% endif %}
+    <div class="login-form">
+        <form action="{% url 'login' %}" method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}">
+            <p>
+                <input type="submit" value="Log-in">
+            </p>
+        </form>
+        <p>
+            {#            <a href="{% url "password_reset" %}">#}
+            {#                Forgotten your password?#}
+            {#            </a>#}
+        </p>
+    </div>
+    <div class="social">
+        <ul>
+            <li class="naver">
+                <a href="{% url 'social:begin' 'naver' %}">
+                    Sign in with Naver
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock content %}
