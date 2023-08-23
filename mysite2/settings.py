@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "blog.apps.BlogConfig",
     "taggit",
     "rosetta",
+    "parler",
 ]
 
 MIDDLEWARE = [
@@ -173,3 +174,14 @@ LANGUAGES = [
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
+
+PARLER_LANGUAGES = {
+    None: {
+        {'code': 'en'},
+        {'code': 'ko'},
+    },
+    'default': {
+        'fallback': 'en',
+        'hide_untranslated': False,
+    }
+}
