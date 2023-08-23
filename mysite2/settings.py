@@ -169,3 +169,7 @@ LANGUAGES = [
     ('en', _('English')),
     ('ko', _('Korean')),
 ]
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
