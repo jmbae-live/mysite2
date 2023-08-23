@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-23 09:48+0900\n"
+"POT-Creation-Date: 2023-08-23 10:43+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,66 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: blog/templates/blog/base.html:10
+msgid "base.html"
+msgstr ""
+
+#: blog/templates/blog/base.html:17
+msgid "title_nav"
+msgstr ""
+
+#: blog/templates/blog/base.html:29
+msgid "title_sidebar"
+msgstr ""
+
+#: blog/templates/blog/base.html:31
+msgid "btn_cart"
+msgstr ""
+
+#: blog/templates/blog/base.html:35
+msgid "title_most_commented_post"
+msgstr ""
+
+#: blog/templates/blog/base.html:44
+msgid "title_latest_posts"
+msgstr ""
+
+#: blog/templates/blog/pagination.html:6
+msgid "Previous"
+msgstr ""
+
+#: blog/templates/blog/pagination.html:12
+msgid "Next"
+msgstr ""
+
+#: blog/templates/blog/post/detail.html:11
+msgid "link_share"
+msgstr ""
+
+#: blog/templates/blog/post/detail.html:15
+msgid "title_products"
+msgstr ""
+
+#: blog/templates/blog/post/detail.html:20
+msgid "btn_add_to_cart"
+msgstr ""
+
+#: blog/templates/blog/post/detail.html:28
+msgid "title_comments"
+msgstr ""
+
+#: blog/templates/blog/post/includes/comment_form.html:2
+msgid "title_comment_form"
+msgstr ""
+
+#: blog/templates/blog/post/includes/comment_form.html:6
+msgid "btn_add_comment"
+msgstr ""
+
+#: blog/templates/blog/post/list.html:5
+msgid "title_list"
+msgstr ""
 
 #: mysite2/settings.py:169
 msgid "English"
