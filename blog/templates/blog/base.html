@@ -13,7 +13,7 @@
 </head>
 <body>
 <nav class="navbar bg-body-emphasis">
-    <div class="container-fluid">
+    <div class="container">
         <a class="navbar-brand h1" href="/">{% trans "title_nav" %}</a>
         {% get_current_language as LANGUAGE_CODE %}
         {% get_available_languages as LANGUAGES %}
@@ -21,7 +21,7 @@
         <div class="dropdown">
             {% for language in languages %}
                 {% if language.code == LANGUAGE_CODE %}
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                         {{ language.name_local }}
                     </button>
