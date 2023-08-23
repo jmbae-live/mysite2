@@ -1,6 +1,7 @@
-<h5>Comment Form</h5>
+{% load i18n %}
+<h5>{% trans "title_comment_form" %}</h5>
 <form action="{% url 'blog:post_comment' post.id %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Add Comment" class="btn btn-primary">
+    <input type="submit" value="{% trans "btn_add_comment" %}" class="btn btn-primary">
 </form>
