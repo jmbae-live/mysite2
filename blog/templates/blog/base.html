@@ -15,6 +15,19 @@
 <nav class="navbar bg-body-emphasis">
     <div class="container-fluid">
         <a class="navbar-brand h1" href="/">{% trans "title_nav" %}</a>
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        <ul>
+            {% for language in languages %}
+                <li>
+                    <a href="/{{ language.code }}/"
+                            {% if language.code == LANGUAGE_CODE %} class="selected"{% endif %}>
+                        {{ language.name_local }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 </nav>
 
