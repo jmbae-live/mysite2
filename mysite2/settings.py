@@ -176,10 +176,10 @@ LOCALE_PATHS = [
 ]
 
 PARLER_LANGUAGES = {
-    None: {
+    None: (
         {'code': 'en'},
         {'code': 'ko'},
-    },
+    ),
     'default': {
         'fallback': 'en',
         'hide_untranslated': False,
