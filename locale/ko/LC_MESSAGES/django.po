@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-23 09:38+0900\n"
+"POT-Creation-Date: 2023-08-23 09:48+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: mysite2/settings.py:168
+#: mysite2/settings.py:169
 msgid "English"
 msgstr ""
 
-#: mysite2/settings.py:169
+#: mysite2/settings.py:170
 msgid "Korean"
 msgstr ""
 

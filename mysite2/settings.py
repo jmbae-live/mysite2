@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.humanize",
     "blog.apps.BlogConfig",
     "taggit",
+    "rosetta",
 ]
 
 MIDDLEWARE = [

@@ -27,5 +27,6 @@ urlpatterns = [
                   path("account/", include('account.urls')),
                   path("blog/", include('blog.urls')),
                   path("shop/", include('shop.urls')),
-                  path('social-auth/', include('social_django.urls', namespace='social'))
+                  path('social-auth/', include('social_django.urls', namespace='social')),
+                  path('rosetta/', include('rosetta.urls')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
