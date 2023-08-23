@@ -15,6 +15,7 @@ def add_cart(request):
     # 세션 'cart' 정보 가져오기
     cart = request.session.get('cart', {})
     cart[str(product_id)] = {
+        'product_id': str(product_id),
         'quantity': 1,
         'price': str(product.price),
     }
@@ -48,7 +49,8 @@ def cart_detail(request):
     for product in products:
         cart[str(product.id)]['product'] = product
     for key, item in cart.items():
-        item['price'] = Decimal(item['price'])
+        product = cart[item['product_id']]['product']
+        item['price'] = Decimal(product.price)
         item['total_price'] = item['price'] * item['quantity']
         cart[key] = item
     total_price = sum(Decimal(item['price']) * item['quantity'] for item in cart.values())
@@ -67,7 +69,8 @@ def order_create(request):
     for product in products:
         cart[str(product.id)]['product'] = product
     for key, item in cart.items():
-        item['price'] = Decimal(item['price'])
+        product = cart[item['product_id']]['product']
+        item['price'] = Decimal(product.price)
         item['total_price'] = item['price'] * item['quantity']
         cart[key] = item
     total_price = sum(Decimal(item['price']) * item['quantity'] for item in cart.values())
@@ -81,6 +84,8 @@ def order_create(request):
         if form.is_valid():
             order = form.save()
             for item in cart.values():
+                product = cart[item['product_id']]['product']
+                item['price'] = Decimal(product.price)
                 OrderItem.objects.create(order=order,
                                          product=item['product'],
                                          price=item['price'],

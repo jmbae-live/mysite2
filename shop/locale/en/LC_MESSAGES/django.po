@@ -8,27 +8,42 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-23 09:49+0900\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2023-08-23 04:29+0000\n"
+"PO-Revision-Date: 2023-08-23 04:30+0000\n"
+"Last-Translator:   <jmbae@live.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: shop/models.py:21
+"X-Translated-Using: django-rosetta 0.9.9\n"
+
+#: shop/models.py:25
 msgid "name"
 msgstr ""
 
-#: shop/models.py:22
+#: shop/models.py:26
 msgid "email"
 msgstr ""
 
-#: shop/models.py:23
+#: shop/models.py:27
 msgid "address"
 msgstr ""
 
-#: shop/models.py:24
+#: shop/models.py:28
 msgid "zipcode"
 msgstr ""
+
+#: shop/templates/shop/cart.html:36
+msgid "btn_checkout"
+msgstr "Checkout"
+
+#, fuzzy, python-format
+#~ msgid ""
+#~ "\n"
+#~ "                    Total: $%(price)s\n"
+#~ "                "
+#~ msgstr ""
+#~ "\n"
+#~ "Total: $%(total_price|intcomma|floatformat:2)s"

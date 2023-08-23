@@ -1,6 +1,8 @@
 {% extends 'blog/base.html' %}
+{% load i18n %}
 {% load humanize %}
 {% block content %}
+    {% get_current_language as LANGUAGE_CODE %}
     <h1>장바구니</h1>
     <ul class="list-group d-flex flex-column col-sm-12">
         {% for product_id, item in cart_dict.items %}
@@ -25,8 +27,12 @@
     <hr>
     <div class="container d-flex flex-column align-items-end">
         <span class="h3">
-        Total: {{ total_price|intcomma }}원
+            {% if LANGUAGE_CODE == 'en' %}
+                Total: ${{ total_price|floatformat:2|intcomma }}
+            {% elif LANGUAGE_CODE == 'ko' %}
+                총: {{ total_price|floatformat:0|intcomma }}원
+            {% endif %}
         </span>
-        <a href="{% url 'shop:order_create' %}" class="btn btn-primary">주문하기</a>
+        <a href="{% url 'shop:order_create' %}" class="btn btn-primary">{% trans "btn_checkout" %}</a>
     </div>
 {% endblock %}

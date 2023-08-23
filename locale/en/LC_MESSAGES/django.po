@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-23 10:43+0900\n"
+"POT-Creation-Date: 2023-08-23 04:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,19 +26,19 @@ msgstr ""
 msgid "title_nav"
 msgstr ""
 
-#: blog/templates/blog/base.html:29
+#: blog/templates/blog/base.html:53
 msgid "title_sidebar"
 msgstr ""
 
-#: blog/templates/blog/base.html:31
+#: blog/templates/blog/base.html:55
 msgid "btn_cart"
 msgstr ""
 
-#: blog/templates/blog/base.html:35
+#: blog/templates/blog/base.html:59
 msgid "title_most_commented_post"
 msgstr ""
 
-#: blog/templates/blog/base.html:44
+#: blog/templates/blog/base.html:68
 msgid "title_latest_posts"
 msgstr ""
 
@@ -78,11 +78,11 @@ msgstr ""
 msgid "title_list"
 msgstr ""
 
-#: mysite2/settings.py:169
+#: mysite2/settings.py:170
 msgid "English"
 msgstr ""
 
-#: mysite2/settings.py:170
+#: mysite2/settings.py:171
 msgid "Korean"
 msgstr ""
 

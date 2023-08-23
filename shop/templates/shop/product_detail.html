@@ -1,6 +1,13 @@
+{% load i18n %}
 {% load humanize %}
+{% get_current_language as LANGUAGE_CODE %}
+
 <h1>{{ product }}</h1>
 {% if product.image %}
     <img width="120" src="{{ product.image.url }}" alt="">
 {% endif %}
-<span>{{ product.price|intcomma }}원</span>
+{% if LANGUAGE_CODE == 'en' %}
+    <span>${{ product.price|floatformat:2|intcomma }}</span>
+{% elif LANGUAGE_CODE == 'ko' %}
+    <span>{{ product.price|floatformat:0|intcomma }}원</span>
+{% endif %}
