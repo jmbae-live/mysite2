@@ -20,7 +20,6 @@ class Product(TranslatableModel):
     def __str__(self):
         return self.name
 
-
 class Order(models.Model):
     name = models.CharField(_('name'), max_length=50)
     email = models.EmailField(_('email'))
