@@ -9,11 +9,11 @@ from blog.models import Post
 class Product(TranslatableModel):
     translations = TranslatedFields(
         name=models.CharField(max_length=200),
+        description=models.TextField(blank=True),
         price=models.DecimalField(default=0, max_digits=12, decimal_places=2),
         currency=models.CharField(max_length=3),
     )
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
-    description = models.TextField(blank=True)
     available = models.BooleanField(default=True)
     posts = models.ManyToManyField(Post, related_name='products')
 
