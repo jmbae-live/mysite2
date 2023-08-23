@@ -187,3 +187,5 @@ PARLER_LANGUAGES = {
         'hide_untranslated': False,
     }
 }
+
+LOGIN_REDIRECT_URL = 'home'
