@@ -1,0 +1,66 @@
+{% load i18n %}
+{% load blog_tags %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% trans 'base.html' %}{% endblock title %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar bg-body-emphasis">
+    <div class="container">
+        <a class="navbar-brand h1" href="/">{% trans "title_nav" %}</a>
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        <div class="dropdown">
+            {% for language in languages %}
+                {% if language.code == LANGUAGE_CODE %}
+                    <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        {{ language.name_local }}
+                    </button>
+                {% endif %}
+            {% endfor %}
+            <ul class="dropdown-menu">
+                {% for language in languages %}
+                    <li>
+                        <a class="dropdown-item{% if language.code == LANGUAGE_CODE %} active{% endif %}"
+                           href="/{{ language.code }}/">
+                            {{ language.name_local }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<div class="container gy-5">
+    <div class="row justify-content-center">
+        <div class="col-9">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<script>
+    const csrftoken = Cookies.get('csrftoken');
+    document.addEventListener('DOMContentLoaded', (event) => {
+        console.log('loaded', csrftoken)
+        {% block domready %}
+        {% endblock domready %}
+    })
+</script>
+</body>
+</html>

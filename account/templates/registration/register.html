@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'no_login.html' %}
 {% load i18n %}
 {% block title %}
     {% trans "title_register" %}
@@ -11,4 +11,7 @@
         {{ form.as_p }}
         <input type="submit" value="{% trans "btn_register" %}">
     </form>
+    <p>
+        계정이 있으면 <a href="{% url "login" %}">여기에서 로그인하세요</a>.
+    </p>
 {% endblock %}
