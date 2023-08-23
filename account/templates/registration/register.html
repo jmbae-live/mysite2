@@ -5,13 +5,17 @@
 {% endblock %}
 
 {% block content %}
-    <h2>{% trans "title_register" %}</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="{% trans "btn_register" %}">
-    </form>
-    <p>
-        계정이 있으면 <a href="{% url "login" %}">여기에서 로그인하세요</a>.
-    </p>
+    <div class="d-grid col-6 mx-auto">
+        <h2>{% trans "title_register" %}</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p class="d-grid gap-2 col-6 mx-auto">
+                <input class="btn btn-primary" type="submit" value="{% trans "btn_register" %}">
+            </p>
+        </form>
+        <p>
+            계정이 있으면 <a href="{% url "login" %}">여기에서 로그인하세요</a>.
+        </p>
+    </div>
 {% endblock %}
