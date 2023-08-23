@@ -1,11 +1,12 @@
 from django.contrib import admin
+from parler.admin import TranslatableAdmin
 
 from shop.models import Product, Order, OrderItem
 
 
 # Register your models here.
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(TranslatableAdmin):
     list_display = ['id', 'name', 'price', 'available']
     list_editable = ['available']
 
