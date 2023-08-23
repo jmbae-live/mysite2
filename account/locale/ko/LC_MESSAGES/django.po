@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-23 05:46+0000\n"
+"POT-Creation-Date: 2023-08-23 15:11+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
 #: account/templates/registration/login.html:3
 #: account/templates/registration/login.html:6
 msgid "title_login"
-msgstr ""
+msgstr "로그인"
+
+#: account/templates/registration/register.html:4
+#: account/templates/registration/register.html:8
+msgid "title_register"
+msgstr "회원가입"
+
+#: account/templates/registration/register.html:12
+msgid "btn_register"
+msgstr "등록"

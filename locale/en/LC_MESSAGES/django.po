@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-23 05:46+0000\n"
+"POT-Creation-Date: 2023-08-23 15:18+0900\n"
 "PO-Revision-Date: 2023-08-23 05:38+0000\n"
 "Last-Translator:   <jmbae@live.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,27 +63,41 @@ msgstr "English"
 msgid "Korean"
 msgstr "Korean"
 
-#: templates/base.html:10
+#: templates/base.html:10 templates/no_login.html:10
 msgid "base.html"
 msgstr "Title"
 
-#: templates/base.html:17
+#: templates/base.html:17 templates/no_login.html:17
 msgid "title_nav"
 msgstr "Django Shop + I18n"
 
-#: templates/base.html:53
+#: templates/base.html:21
+msgid "link_logout"
+msgstr ""
+
+#: templates/base.html:23
+msgid "link_login"
+msgstr ""
+
+#: templates/base.html:24
+#, fuzzy
+#| msgid "link_share"
+msgid "link_register"
+msgstr "Share"
+
+#: templates/base.html:62
 msgid "title_sidebar"
 msgstr "Sidebar"
 
-#: templates/base.html:55
+#: templates/base.html:64
 msgid "btn_cart"
 msgstr "Cart"
 
-#: templates/base.html:59
+#: templates/base.html:68
 msgid "title_most_commented_post"
 msgstr "Most Commented Post"
 
-#: templates/base.html:68
+#: templates/base.html:77
 msgid "title_latest_posts"
 msgstr "Latest Post"
 
