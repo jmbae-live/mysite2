@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-23 04:29+0000\n"
+"POT-Creation-Date: 2023-08-23 05:46+0000\n"
 "PO-Revision-Date: 2023-08-23 04:30+0000\n"
 "Last-Translator:   <jmbae@live.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,19 +19,19 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Translated-Using: django-rosetta 0.9.9\n"
 
-#: shop/models.py:25
+#: shop/models.py:24
 msgid "name"
 msgstr "이름"
 
-#: shop/models.py:26
+#: shop/models.py:25
 msgid "email"
 msgstr "이메일"
 
-#: shop/models.py:27
+#: shop/models.py:26
 msgid "address"
 msgstr "주소"
 
-#: shop/models.py:28
+#: shop/models.py:27
 msgid "zipcode"
 msgstr "우편번호"
 
