@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+from django.utils.translation import gettext_lazy as _
 
 from pathlib import Path
 
@@ -25,7 +26,7 @@ SECRET_KEY = "django-insecure-+5pyu10r9jecf%pk8!ix_q!ap^0^#8^+%8-80+o#wbv7$h#ull
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'mysite.com'
+    'mysite.com', 'localhost', '127.0.0.1'
 ]
 
 # Application definition
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    'django.middleware.locale.LocaleMiddleware',
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -110,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "en"
 
 TIME_ZONE = "UTC"
 
@@ -161,3 +163,8 @@ AUTHENTICATION_BACKENDS = [
 
 SOCIAL_AUTH_NAVER_KEY = 'JiARA_lKm_5xm9Sd9l4x'
 SOCIAL_AUTH_NAVER_SECRET = 'TXMPVDfEVC'
+
+LANGUAGES = [
+    ('en', _('English')),
+    ('ko', _('Korean')),
+]
