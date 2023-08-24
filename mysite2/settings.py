@@ -165,13 +165,16 @@ CELERY_TASK_ALWAYS_EAGER = DEBUG
 
 # 소셜 로그인 백엔드 설정
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.naver.NaverOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 # 네이버 소셜 로그인 설정
 SOCIAL_AUTH_NAVER_KEY = 'JiARA_lKm_5xm9Sd9l4x'
 SOCIAL_AUTH_NAVER_SECRET = 'TXMPVDfEVC'
+
+# 네이버 소셜 로그인 데이터 범위
+SOCIAL_AUTH_NAVER_EXTRA_DATA = ['profile_image']
 
 # 소셜 로그인 JSON Field 추가 ( Postgres 경우 )
 SOCIAL_AUTH_JSONFIELD_ENABLED = True
