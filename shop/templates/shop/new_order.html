@@ -1,32 +1,44 @@
-{% extends 'base.html' %}
+{% extends 'no_login.html' %}
+{% load i18n %}
 {% load humanize %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block title %}
-    주문하기
+    {% trans 'title_new_order' %}
 {% endblock %}
 
 {% block content %}
-    <h1>주문하기</h1>
+    <h1>{% trans 'title_new_order' %}</h1>
     <div class="container-fluid d-flex flex-row justify-content-between">
         <form class="col-sm-6" action="{% url 'shop:order_create' %}" method="post">
             {{ form.as_p }}
             {% csrf_token %}
-            <input type="submit" value="결제하기" class="btn btn-primary form-control">
+            <input type="submit" value="{% trans 'btn_place_order' %}" class="btn btn-primary form-control">
         </form>
 
         <div class="col-sm-3">
             <ul class="list-group rounded-0 d-flex flex-column col-sm-12">
                 <li class="list-group-item">
-                    <h4>주문정보</h4>
+                    <h4>{% trans 'title_order_info' %}</h4>
                 </li>
                 {% for product_id, item in cart_dict.items %}
                     <li class="list-group-item col-sm-12 d-flex flex-row align-items-center justify-content-between">
-                        <span>{{ item.product }}({{ item.price|intcomma }}원)</span>
+                        <span>{{ item.product }}
+                            {% if LANGUAGE_CODE == 'en' %}
+                                (${{ item.product.price|floatformat:2|intcomma }})
+                            {% elif LANGUAGE_CODE == 'ko' %}
+                                ({{ item.product.price|floatformat:0|intcomma }}원)
+                            {% endif %}
+                        </span>
                         <span>x {{ item.quantity }}</span>
                     </li>
                 {% endfor %}
                 <li class="list-group-item h3">
-                    Total: {{ total_price|intcomma }}원
+                    {% if LANGUAGE_CODE == 'en' %}
+                        Total: ${{ total_price|floatformat:2|intcomma }}
+                    {% elif LANGUAGE_CODE == 'ko' %}
+                        합계: {{ total_price|floatformat:0|intcomma }}원
+                    {% endif %}
                 </li>
             </ul>
             <div class="container d-flex flex-column align-items-end">

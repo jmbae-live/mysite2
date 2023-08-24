@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-23 15:11+0900\n"
+"POT-Creation-Date: 2023-08-24 11:26+0900\n"
 "PO-Revision-Date: 2023-08-23 06:22+0000\n"
 "Last-Translator:   <jmbae@live.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,15 +20,15 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.9.9\n"
 
 #: account/templates/registration/login.html:3
-#: account/templates/registration/login.html:6
+#: account/templates/registration/login.html:7
 msgid "title_login"
 msgstr "Log-In"
 
 #: account/templates/registration/register.html:4
-#: account/templates/registration/register.html:8
+#: account/templates/registration/register.html:9
 msgid "title_register"
 msgstr "Register"
 
-#: account/templates/registration/register.html:12
+#: account/templates/registration/register.html:14
 msgid "btn_register"
 msgstr "Resister"
