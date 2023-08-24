@@ -200,3 +200,5 @@ PARLER_LANGUAGES = {
 }
 
 LOGIN_REDIRECT_URL = 'home'
+
+CSRF_TRUSTED_ORIGINS = ['https://8e71-125-189-242-51.ngrok-free.app']
