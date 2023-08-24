@@ -25,6 +25,9 @@ SECRET_KEY = "django-insecure-+5pyu10r9jecf%pk8!ix_q!ap^0^#8^+%8-80+o#wbv7$h#ull
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# https 서버 실행을 위해 할 일
+# 1. 운영체제의 hosts 파일 수정 (mysite.com 127.0.0.1 추가)
+# 2. ALLOWED_HOSTS mysite.com 추가
 ALLOWED_HOSTS = [
     'mysite.com', 'localhost', '127.0.0.1'
 ]
@@ -33,8 +36,8 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
-    'social_django',
-    'django_extensions',
+    'social_django',  # 소셜 로그인 앱 (pip install social-auth-app-django )
+    'django_extensions',  # runserver_plus 실행 (pip install django-extensions)
     "shop.apps.ShopConfig",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -160,13 +163,18 @@ CACHES = {
 
 CELERY_TASK_ALWAYS_EAGER = DEBUG
 
+# 소셜 로그인 백엔드 설정
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.naver.NaverOAuth2',
 ]
 
+# 네이버 소셜 로그인 설정
 SOCIAL_AUTH_NAVER_KEY = 'JiARA_lKm_5xm9Sd9l4x'
 SOCIAL_AUTH_NAVER_SECRET = 'TXMPVDfEVC'
+
+# 소셜 로그인 JSON Field 추가 ( Postgres 경우 )
+SOCIAL_AUTH_JSONFIELD_ENABLED = True
 
 LANGUAGES = [
     ('en', _('English')),
