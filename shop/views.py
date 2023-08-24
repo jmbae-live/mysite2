@@ -93,6 +93,7 @@ def order_create(request):
             request.session['cart'] = {}
             request.session.modified = True
             order_created.delay(order.id)
+            # TODO: 토스페이먼트 결제 추가
             return render(request, 'shop/order_created.html', {'order': order})
     else:
         form = OrderCreateForm()
