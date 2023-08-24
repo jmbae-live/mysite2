@@ -1,12 +1,33 @@
 {% extends 'no_sidebar.html' %}
 
 {% block title %}
-    주문완료
+    토스 페이먼트 결제
 {% endblock %}
 
 {% block content %}
-    <h1>주문완료</h1>
-    <p>
-        #{{ order.id }} 주문이 완료되었습니다.
-    </p>
+    <h1>토스 페이먼트 결제</h1>
+    <div id="payment-method"></div>
+    <button id="payment-request-button">결제하기</button>
+{% endblock %}
+
+{% block javascript %}
+    <script src="https://js.tosspayments.com/v1/payment-widget"></script>
+    <script>
+        const paymentWidget = PaymentWidget(
+            "test_ck_vZnjEJeQVxy5B67nK0drPmOoBN0k",
+            PaymentWidget.ANONYMOUS
+        );
+        paymentWidget.renderPaymentMethods("#payment-method", {value: {{ order.get_total_cost }}});
+
+        const paymentRequestButton = document.getElementById('payment-request-button');
+        paymentRequestButton.addEventListener('click', () => {
+            paymentWidget.requestPayment({
+                orderId: "order-{{ order.id }}",
+                orderName: "{{ order }}",
+                successUrl: window.location.origin + "/ko/shop/success",
+                failUrl: window.location.origin + "/ko/shop/fail"
+            });
+        });
+
+    </script>
 {% endblock %}
