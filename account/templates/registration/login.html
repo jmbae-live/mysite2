@@ -30,13 +30,16 @@
             </a>
         </p>
     </div>
-    <div class="social">
-        <ul>
-            <li class="naver">
-                <a class="btn" href="{% url 'social:begin' 'naver' %}">
+    {#  소셜 로그인 설정  #}
+    <div class="d-grid">
+        <ul class="list-group list-group-flush d-flex">
+            <li class="list-group-item col-12 justify-content-end">
+                {#  소셜 로그인 네이버  #}
+                <a class="btn btn-success" href="{% url 'social:begin' 'naver' %}">
                     Sign in with Naver
                 </a>
             </li>
         </ul>
     </div>
+    {#  소셜 로그인 설정  #}
 {% endblock content %}
