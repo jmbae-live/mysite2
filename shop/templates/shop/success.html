@@ -1,0 +1,18 @@
+{% extends 'no_sidebar.html' %}
+
+{% block title %}
+    결제 성공
+{% endblock %}
+
+{% block content %}
+    <h1>결제 성공</h1>
+    <div class="gray">
+        <p>paymentKey = {{ paymentKey }}</p>
+        <p>orderId = {{ orderId }}</p>
+    </div>
+
+    <div class="gray">
+        <b>Response Data :</b>
+        <pre>{{ res }}</pre>
+    </div>
+{% endblock %}

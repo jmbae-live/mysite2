@@ -21,6 +21,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from blog import views
+from shop import webhooks
 
 urlpatterns = i18n_patterns(
     path("", views.post_list, name='home'),
@@ -33,5 +34,6 @@ urlpatterns = i18n_patterns(
 
 # Callback URL 국제화 예외 처리
 urlpatterns += [
+    path('webhook/toss/', webhooks.toss_webhook, name='toss-webhook'),
     path('social-auth/', include('social_django.urls', namespace='social')),
 ]

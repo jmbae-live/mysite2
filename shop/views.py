@@ -108,8 +108,22 @@ def order_create(request):
 
 
 def payment_success(request):
-    return render(request, 'shop/success.html')
+    payment_key = request.GET.get('paymentKey')
+    order_id = request.GET.get('orderId')
+    res = dict(request.GET.items())
+    return render(request, 'shop/success.html', {
+        'paymentKey': payment_key,
+        'orderId': order_id,
+        'res': res,
+    })
 
 
 def payment_fail(request):
-    return render(request, 'shop/fail.html')
+    code = request.GET.get('code')
+    message = request.GET.get('message')
+    res = dict(request.GET.items())
+    return render(request, 'shop/fail.html', {
+        'code': code,
+        'message': message,
+        'res': res,
+    })

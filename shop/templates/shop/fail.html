@@ -1,0 +1,17 @@
+{% extends 'no_sidebar.html' %}
+
+{% block title %}
+    결제 실패
+{% endblock %}
+
+{% block content %}
+    <h1>결제 실패</h1>
+    <div>
+        <p>에러코드: {{ code }}</p>
+        <p>에러메시지: {{ message }}</p>
+    </div>
+    <div class="gray">
+        <b>Response Data :</b>
+        <pre>{{ res }}</pre>
+    </div>
+{% endblock %}
