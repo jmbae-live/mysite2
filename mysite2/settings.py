@@ -29,7 +29,7 @@ DEBUG = True
 # 1. 운영체제의 hosts 파일 수정 (mysite.com 127.0.0.1 추가)
 # 2. ALLOWED_HOSTS mysite.com 추가
 ALLOWED_HOSTS = [
-    'mysite.com', 'localhost', '127.0.0.1'
+    'mysite.com', 'localhost', '127.0.0.1', '8e71-125-189-242-51.ngrok-free.app'
 ]
 
 # Application definition
