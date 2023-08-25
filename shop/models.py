@@ -1,7 +1,5 @@
-import random
-import string
-
 from django.db import models
+from django.utils.crypto import get_random_string
 from django.utils.translation import gettext_lazy as _
 from parler.models import TranslatableModel, TranslatedFields
 
@@ -24,11 +22,6 @@ class Product(TranslatableModel):
         return self.name
 
 
-def generate_random_text():
-    # Generating a random string with 10 characters
-    return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(50))
-
-
 class Order(models.Model):
     name = models.CharField(_('name'), max_length=50)
     email = models.EmailField(_('email'))
@@ -38,9 +31,9 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     # Default 밸류로 랜덤함수 값을 입력 ( 마이그레이션 파일에 Default 값을 지워줘야 합니다. )
-    toss_order_id = models.CharField(max_length=50, unique=True, null=True, default=generate_random_text())
-    toss_payment_key = models.CharField(max_length=200, null=True) # 선택옵션
-    toss_payment_data = models.JSONField(null=True) # 선택옵션
+    toss_order_id = models.CharField(max_length=50, unique=True, null=True, default=get_random_string(50))
+    toss_payment_key = models.CharField(max_length=200, null=True)  # 선택옵션
+    toss_payment_data = models.JSONField(null=True)  # 선택옵션
 
     def __str__(self):
         return f"주문 {self.id}"
