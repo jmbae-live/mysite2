@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from shop.forms import OrderCreateForm
 from shop.models import Product, OrderItem, Order
-from shop.tasks import order_created
+from shop.tasks import order_created, toss_payment_confirm
 
 
 # Create your views here.
@@ -117,6 +117,7 @@ def payment_success(request):
     payment_key = request.GET.get('paymentKey')
     order_id = request.GET.get('orderId')
     res = dict(request.GET.items())
+    toss_payment_confirm.delay(payment_key, order_id)
     return render(request, 'shop/success.html', {
         'paymentKey': payment_key,
         'orderId': order_id,

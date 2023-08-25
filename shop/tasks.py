@@ -14,3 +14,9 @@ def order_created(order_id):
     mail_sent = send_mail(subject, message, 'admin@example.com', [order.email])
     print(message)
     return mail_sent
+
+
+@shared_task
+def toss_payment_confirm(payment_key, order_id):
+    print('toss_payment_confirm:' + payment_key)
+    return
