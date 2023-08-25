@@ -22,7 +22,7 @@
         const paymentRequestButton = document.getElementById('payment-request-button');
         paymentRequestButton.addEventListener('click', () => {
             paymentWidget.requestPayment({
-                orderId: "order-{{ order.id }}",
+                orderId: "{{ order.toss_order_id }}",
                 orderName: "{{ order }}",
                 successUrl: window.location.origin + "/ko/shop/success",
                 failUrl: window.location.origin + "/ko/shop/fail"

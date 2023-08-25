@@ -121,12 +121,12 @@ def order_create(request):
 
 def payment_success(request):
     payment_key = request.GET.get('paymentKey')
-    order_id = request.GET.get('orderId')
+    toss_order_id = request.GET.get('orderId')
     res = dict(request.GET.items())
-    toss_payment_confirm.delay(payment_key, order_id)
+    toss_payment_confirm.delay(payment_key, toss_order_id)
     return render(request, 'shop/success.html', {
         'paymentKey': payment_key,
-        'orderId': order_id,
+        'orderId': toss_order_id,
         'res': res,
     })
 

@@ -21,10 +21,8 @@ def order_created(order_id):
 
 
 @shared_task
-def toss_payment_confirm(payment_key, order_id_string):
-    order_id = int(order_id_string.replace('order-', ''))
-    order = Order.objects.get(id=order_id)
-
+def toss_payment_confirm(payment_key, toss_order_id):
+    order = Order.objects.get(toss_order_id=toss_order_id)
     # 토스 인증 - 시크릿 키를 base64 로 인코딩해서 헤더로 전달함
     encoding_str = (settings.TOSS_SECRET_KEY + ':').encode()
     encoded_secret_key = base64.urlsafe_b64encode(encoding_str)
@@ -38,14 +36,12 @@ def toss_payment_confirm(payment_key, order_id_string):
     }
     payload = {
         'paymentKey': payment_key,
-        'orderId': order_id_string,
+        'orderId': toss_order_id,
         'amount': order.get_total_cost(),
     }
     confirm_res = requests.post(toss_api_confirm_url, json=payload, headers=confirm_headers)
     res_data = dict(confirm_res.json())
-    print('1')
     print(res_data)
-    print('2')
     # 결제 확인 API 호출
     toss_api_url = 'https://api.tosspayments.com/v1/payments/' + payment_key
     headers = {
