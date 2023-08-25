@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
 from shop.forms import OrderCreateForm
-from shop.models import Product, OrderItem
+from shop.models import Product, OrderItem, Order
 from shop.tasks import order_created
 
 
@@ -59,6 +59,12 @@ def cart_detail(request):
         'cart_dict': cart,
         'total_price': total_price
     })
+
+
+# 결제 확인을 위한 임시 페이지
+def payment_test(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    return render(request, 'shop/payment.html', {'order': order})
 
 
 def order_create(request):
