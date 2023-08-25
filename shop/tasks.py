@@ -19,4 +19,7 @@ def order_created(order_id):
 @shared_task
 def toss_payment_confirm(payment_key, order_id):
     print('toss_payment_confirm:' + payment_key)
+    # 토스 인증
+    # 결제 확인 API 호출
+    # 결과 확인 데이터베이스 업데이트
     return

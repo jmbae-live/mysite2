@@ -3,6 +3,7 @@ from decimal import Decimal
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
+from mysite2 import settings
 from shop.forms import OrderCreateForm
 from shop.models import Product, OrderItem, Order
 from shop.tasks import order_created, toss_payment_confirm
@@ -99,8 +100,10 @@ def order_create(request):
             request.session['cart'] = {}
             request.session.modified = True
             order_created.delay(order.id)
-            # TODO: 토스페이먼트 결제 추가
-            return render(request, 'shop/payment.html', {'order': order})
+            toss_client_key = settings.TOSS_CLIENT_KEY
+            return render(request, 'shop/payment.html', {
+                'order': order,
+                'toss_client_key': toss_client_key})
     else:
         form = OrderCreateForm()
 

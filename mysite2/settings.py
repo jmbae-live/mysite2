@@ -203,3 +203,7 @@ LOGIN_REDIRECT_URL = 'home'
 
 # ngrok 동작 시에만 추가
 # CSRF_TRUSTED_ORIGINS = ['https://8e71-125-189-242-51.ngrok-free.app']
+
+# 토스 API 키 설정
+TOSS_CLIENT_KEY = 'test_ck_vZnjEJeQVxy5B67nK0drPmOoBN0k'
+TOSS_SECRET_KEY = 'test_sk_AQ92ymxN349XKkmN41PVajRKXvdk'

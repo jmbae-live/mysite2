@@ -14,7 +14,7 @@
     <script src="https://js.tosspayments.com/v1/payment-widget"></script>
     <script>
         const paymentWidget = PaymentWidget(
-            "test_ck_vZnjEJeQVxy5B67nK0drPmOoBN0k",
+            "{{ toss_client_key }}",
             PaymentWidget.ANONYMOUS
         );
         paymentWidget.renderPaymentMethods("#payment-method", {value: {{ order.get_total_cost }}});
