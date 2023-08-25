@@ -65,7 +65,10 @@ def cart_detail(request):
 # 결제 확인을 위한 임시 페이지
 def payment_test(request, order_id):
     order = get_object_or_404(Order, id=order_id)
-    return render(request, 'shop/payment.html', {'order': order})
+    toss_client_key = settings.TOSS_CLIENT_KEY
+    return render(request, 'shop/payment.html', {
+        'order': order,
+        'toss_client_key': toss_client_key})
 
 
 def order_create(request):
