@@ -31,26 +31,17 @@ def toss_payment_confirm(payment_key, order_id_string):
     # 결제 승인 API 호출
     toss_api_confirm_url = 'https://api.tosspayments.com/v1/payments/confirm'
     idempotency_key = get_random_string(length=100)
-    headers = {
+    confirm_headers = {
         'Authorization': 'Basic ' + encoded_secret_key.decode('utf-8'),
         'Content-Type': 'application/json',
         'Idempotency-Key': idempotency_key,
     }
-    print(headers)
-    print({
-        'version': '2022-11-16',
-        'type': 'NORMAL',
+    payload = {
         'paymentKey': payment_key,
         'orderId': order_id_string,
         'amount': order.get_total_cost(),
-    })
-    confirm_res = requests.post(toss_api_confirm_url, {
-        'version': '2022-11-16',
-        'type': 'NORMAL',
-        'paymentKey': payment_key,
-        'orderId': order_id_string,
-        'amount': order.get_total_cost(),
-    }, headers=headers)
+    }
+    confirm_res = requests.post(toss_api_confirm_url, json=payload, headers=confirm_headers)
     res_data = dict(confirm_res.json())
     print('1')
     print(res_data)
