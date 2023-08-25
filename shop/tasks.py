@@ -1,5 +1,5 @@
 import base64
-
+from django.utils.crypto import get_random_string
 import requests
 from celery import shared_task
 from django.core.mail import send_mail
@@ -21,11 +21,40 @@ def order_created(order_id):
 
 
 @shared_task
-def toss_payment_confirm(payment_key, order_id):
+def toss_payment_confirm(payment_key, order_id_string):
+    order_id = int(order_id_string.replace('order-', ''))
+    order = Order.objects.get(id=order_id)
+
     # 토스 인증 - 시크릿 키를 base64 로 인코딩해서 헤더로 전달함
     encoding_str = (settings.TOSS_SECRET_KEY + ':').encode()
     encoded_secret_key = base64.urlsafe_b64encode(encoding_str)
-    print(str(encoded_secret_key))
+    # 결제 승인 API 호출
+    toss_api_confirm_url = 'https://api.tosspayments.com/v1/payments/confirm'
+    idempotency_key = get_random_string(length=100)
+    headers = {
+        'Authorization': 'Basic ' + encoded_secret_key.decode('utf-8'),
+        'Content-Type': 'application/json',
+        'Idempotency-Key': idempotency_key,
+    }
+    print(headers)
+    print({
+        'version': '2022-11-16',
+        'type': 'NORMAL',
+        'paymentKey': payment_key,
+        'orderId': order_id_string,
+        'amount': order.get_total_cost(),
+    })
+    confirm_res = requests.post(toss_api_confirm_url, {
+        'version': '2022-11-16',
+        'type': 'NORMAL',
+        'paymentKey': payment_key,
+        'orderId': order_id_string,
+        'amount': order.get_total_cost(),
+    }, headers=headers)
+    res_data = dict(confirm_res.json())
+    print('1')
+    print(res_data)
+    print('2')
     # 결제 확인 API 호출
     toss_api_url = 'https://api.tosspayments.com/v1/payments/' + payment_key
     headers = {
@@ -34,8 +63,7 @@ def toss_payment_confirm(payment_key, order_id):
     # 결과 확인 데이터베이스 업데이트
     response = requests.get(toss_api_url, headers=headers)
     res_data = dict(response.json())
-    order_id = int(res_data['orderId'].replace('order-', ''))
-    order = Order.objects.get(id=order_id)
+
     if res_data['status'] == 'DONE':
         order.paid = True
         order.save()
